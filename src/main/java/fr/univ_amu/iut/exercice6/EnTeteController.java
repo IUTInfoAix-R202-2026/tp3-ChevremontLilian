@@ -29,6 +29,10 @@ public class EnTeteController {
     // TODO exercice 6 : déclencher actionNouveauSite.run() à chaque clic sur boutonNouveauSite.
     // (Astuce : boutonNouveauSite.setOnAction(e -> ...). On évite onAction="#..." dans le FXML
     //  car la cible de l'action est fournie dynamiquement par le contrôleur parent.)
+    boutonNouveauSite.setOnAction(
+        event -> {
+          actionNouveauSite.run();
+        });
     mettreAJourCompteur(0);
   }
 
@@ -50,5 +54,17 @@ public class EnTeteController {
     //   - "Aucun site déclaré"             si nombreSites == 0
     //   - "1 site déclaré"                  si nombreSites == 1
     //   - "<nombreSites> sites déclarés"   sinon
+    switch (nombreSites) {
+      case 0:
+        labelSousTitre.setText("Aucun site déclaré");
+        break;
+      case 1:
+        labelSousTitre.setText("1 site déclaré");
+        break;
+
+      default:
+        labelSousTitre.setText(nombreSites + " sites déclarés");
+        break;
+    }
   }
 }
